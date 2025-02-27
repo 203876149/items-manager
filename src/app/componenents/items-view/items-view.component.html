@@ -5,7 +5,7 @@
     position="end" mode="over" [opened]="false"
     [fixedInViewport]="false" [fixedTopGap]="0"
     [fixedBottomGap]="0">
-    <app-edit-item (close)="sidenav.toggle(false)"/>
+    <app-edit-item (close)="sidenav.toggle(false).then(editItem = null)" [editItem]="editItem"/>
   </mat-sidenav>
   <mat-sidenav-content>
 
@@ -15,7 +15,7 @@
         <input type="text" name="filter" placeholder="Find by name..." [ngModel]="filter()" (ngModelChange)="filter.set($event)"/>
       </form>
       <div class="items-toolbar">
-        <button mat-icon-button matTooltip="Add new item" (click)="sidenav.toggle()">
+        <button mat-icon-button matTooltip="Add new item" (click)="editItem = null; sidenav.toggle();">
           <mat-icon>add</mat-icon>
         </button>
         <mat-button-toggle-group (change)="changeView($event)" [value]="viewMode">
@@ -27,7 +27,7 @@
 
     <div class="content">
       @if (viewMode === 'table') {
-        <app-items-table [itemsList]="displayItems() || []"></app-items-table>
+        <app-items-table [itemsList]="displayItems() || []" (editItem)="onEditItem($event)"></app-items-table>
       }
       @else {
         <app-items-tile [itemsList]="displayItems() || []"></app-items-tile>

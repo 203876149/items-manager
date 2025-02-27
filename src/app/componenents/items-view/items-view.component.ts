@@ -1,8 +1,18 @@
-import {ChangeDetectionStrategy, Component, computed, inject, model, signal, untracked} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  model,
+  signal,
+  ViewChild
+} from '@angular/core';
 import {ItemsStoreService} from '../../services/items-store.service';
 import {MatButtonToggleChange} from '@angular/material/button-toggle';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {PageEvent} from '@angular/material/paginator';
+import {IItem} from '../../models/item.model';
+import {MatSidenav} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-items-view',
@@ -17,11 +27,17 @@ export class ItemsViewComponent {
 
   viewMode: 'table' | 'tile' = 'table';
 
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+
+  editItem: IItem | null = null;
+
 
 
   filter = model<string>('');
 
-  itemsList = toSignal(inject(ItemsStoreService).itemsList);
+  itemsStoreService = inject(ItemsStoreService);
+
+  itemsList = toSignal(this.itemsStoreService.itemsList);
 
   pagination = signal({pageSize: 10, pageIndex: 0});
 
@@ -30,6 +46,9 @@ export class ItemsViewComponent {
       .slice(this.pagination().pageIndex * this.pagination().pageSize, (this.pagination().pageIndex + 1) * this.pagination().pageSize);
   })
 
+  ngOnInit() {
+  }
+
 
   changeView($event: MatButtonToggleChange) {
     this.viewMode = $event.value;
@@ -37,5 +56,10 @@ export class ItemsViewComponent {
 
   setPagination($event: PageEvent) {
     this.pagination.set({pageSize: $event.pageSize, pageIndex: $event.pageIndex});
+  }
+
+  onEditItem($event: IItem) {
+    this.editItem = $event;
+    this.sidenav.toggle(true);
   }
 }

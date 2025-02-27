@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, input, Output} from '@angular/core';
 import {IItem} from '../../models/item.model';
 
 @Component({
@@ -11,10 +11,11 @@ import {IItem} from '../../models/item.model';
 export class ItemsTableComponent {
 
   itemsList = input.required<Array<IItem>>();
-  displayedColumns = ['color', 'name', 'createdAt', 'updatedAt', 'createdBy'];
+  displayedColumns = ['color', 'name', 'createdAt', 'updatedAt', 'createdBy', 'id'];
+  @Output() editItem = new EventEmitter<IItem>();
 
 
-  ngOnInit() {
+  onEditItem(element: IItem) {
+    this.editItem.emit(element);
   }
-
 }

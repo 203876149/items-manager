@@ -1,5 +1,5 @@
 <div class="tag-form">
-<h3 class="title">Create New</h3>
+<h3 class="title">{{ mode === 'edit' ? 'Edit Item' : 'Create New' }}</h3>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="form-fields">
     <mat-form-field>
@@ -10,7 +10,7 @@
     <mat-form-field>
       <mat-label>User Name</mat-label>
       <mat-label>Name</mat-label>
-      <input matInput placeholder="Type user name..." formControlName="userName">
+      <input matInput placeholder="Type user name..." formControlName="createdBy">
     </mat-form-field>
 
     <mat-form-field>

@@ -1,5 +1,7 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ItemsStoreService} from '../../services/items-store.service';
+import {IItem} from '../../models/item.model';
 
 @Component({
   selector: 'app-edit-item',
@@ -12,28 +14,40 @@ export class EditItemComponent {
 
   form: FormGroup = new FormGroup({
     name: new FormControl<any>('', Validators.required),
-    userName: new FormControl<any>('', Validators.required),
+    createdBy: new FormControl<any>('', Validators.required),
     color: new FormControl<any>('', Validators.required),
     description: new FormControl<any>('', Validators.required)
   });
 
+  mode: 'create' | 'edit' = 'create';
+
   @Output() close = new EventEmitter<boolean>();
-
-  constructor() {}
-
-
-  save() {
-    // Save the item
+  @Input() set editItem(item: IItem | null) {
+    if (item) {
+      this.mode = 'edit';
+      this.form.patchValue(item);
+      this.#editItem = item;
+    } else {
+      this.mode = 'create';
+      this.form.reset();
+      this.#editItem = null;
+    }
   }
+  #editItem: IItem | null = null;
 
-  protected readonly FormControl = FormControl;
+  constructor(private itemsStoreService: ItemsStoreService) {}
 
   onCancel() {
     this.close.emit(false);
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    if (this.form.invalid) return;
+    if (this.mode === 'create') {
+      this.itemsStoreService.addItem(this.form.value);
+    } else {
+      this.itemsStoreService.updateItem({...this.#editItem, ...this.form.value});
+    }
     this.close.emit(true);
   }
 }
