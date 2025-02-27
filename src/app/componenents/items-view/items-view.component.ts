@@ -30,6 +30,7 @@ export class ItemsViewComponent {
       .slice(this.pagination().pageIndex * this.pagination().pageSize, (this.pagination().pageIndex + 1) * this.pagination().pageSize);
   })
 
+
   changeView($event: MatButtonToggleChange) {
     this.viewMode = $event.value;
   }

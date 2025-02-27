@@ -1,0 +1,35 @@
+<div class="tag-form">
+<h3 class="title">Create New</h3>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-fields">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Type tag name..." formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>User Name</mat-label>
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Type user name..." formControlName="userName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Color</mat-label>
+      <mat-select formControlName="color">
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Tag Description</mat-label>
+      <textarea matInput placeholder="Type tag description..." formControlName="description"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="form-actions">
+    <button mat-button color="warn" type="button" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+  </div>
+</form>
+</div>

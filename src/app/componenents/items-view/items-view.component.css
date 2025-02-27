@@ -12,6 +12,13 @@
   border-bottom: 1px solid #ddd;
 }
 
+.items-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}
+
 .search-form input {
   padding: 8px;
   border: 1px solid #ccc;

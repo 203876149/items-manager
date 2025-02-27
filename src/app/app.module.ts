@@ -12,8 +12,14 @@ import { ItemsTileComponent } from './componenents/items-tile/items-tile.compone
 import {MatCardModule, MatCardSubtitle} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridList, MatGridTile} from '@angular/material/grid-list';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTooltip} from '@angular/material/tooltip';
+import { EditItemComponent } from './componenents/edit-item/edit-item.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -21,6 +27,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ItemsViewComponent,
     ItemsTableComponent,
     ItemsTileComponent,
+    EditItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,13 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatGridList,
     MatGridTile,
     FormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSidenavModule,
+    MatTooltip,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
