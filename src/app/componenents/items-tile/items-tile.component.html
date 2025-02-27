@@ -1,0 +1,17 @@
+  <mat-grid-list [cols]="5">
+    @for (item of itemsList(); track item.id; let i = $index) {
+      <mat-grid-tile>
+        <mat-card appearance="raised" class="grid-card">
+          <mat-card-header>
+            <mat-card-title>{{ item.color }}</mat-card-title>
+            <mat-card-subtitle>Created By {{ item.createdBy }}</mat-card-subtitle>
+            <mat-card-subtitle>Created Date {{ item.createdAt | date : 'dd/MM/yy' }}</mat-card-subtitle>
+            <mat-card-subtitle>Update Date {{ item.updatedAt | date : 'dd/MM/yy' }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ item.name }}</p>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    }
+  </mat-grid-list>

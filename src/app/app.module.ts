@@ -3,14 +3,60 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ItemsViewComponent } from './componenents/items-view/items-view.component';
+import { ItemsTableComponent } from './componenents/items-table/items-table.component';
+import {
+  MatCell, MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow, MatHeaderRowDef,
+  MatRow, MatRowDef,
+  MatTable
+} from '@angular/material/table';
+import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
+import {MatIcon} from '@angular/material/icon';
+import { ItemsTileComponent } from './componenents/items-tile/items-tile.component';
+import {
+  MatCard,
+  MatCardActions,
+  MatCardHeader,
+  MatCardModule,
+  MatCardSubtitle,
+  MatCardTitle
+} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridList, MatGridTile} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ItemsViewComponent,
+    ItemsTableComponent,
+    ItemsTileComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTable,
+    MatHeaderCell,
+    MatColumnDef,
+    MatCell,
+    MatHeaderRow,
+    MatRow,
+    MatHeaderCellDef,
+    MatCellDef,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatButtonToggleGroup,
+    MatButtonToggle,
+    MatIcon,
+    MatCardModule,
+    MatCardSubtitle,
+    MatButtonModule,
+    MatGridList,
+    MatGridTile
+
   ],
   providers: [],
   bootstrap: [AppComponent]
