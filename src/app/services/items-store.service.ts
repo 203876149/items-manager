@@ -9,7 +9,11 @@ export class ItemsStoreService {
 
   constructor() { }
 
-  itemsList = new BehaviorSubject<IItem[]>(this.getItems());
+  #itemsList = new BehaviorSubject<IItem[]>(this.getItems());
+
+  get itemsList() {
+    return this.#itemsList.asObservable();
+  }
 
   getItems(): IItem[] {
     return [

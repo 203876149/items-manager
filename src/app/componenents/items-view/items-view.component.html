@@ -1,12 +1,31 @@
-<div>
-  <mat-button-toggle-group (change)="changeView($event)" [value]="viewMode">
-    <mat-button-toggle value="table"><mat-icon>view_list</mat-icon></mat-button-toggle>
-    <mat-button-toggle value="tile"><mat-icon>view_module</mat-icon></mat-button-toggle>
-  </mat-button-toggle-group>
+<div class="page-wrapper">
+  <div class="toolbar">
+    <mat-button-toggle-group (change)="changeView($event)" [value]="viewMode">
+      <mat-button-toggle value="table"><mat-icon>view_list</mat-icon></mat-button-toggle>
+      <mat-button-toggle value="tile"><mat-icon>view_module</mat-icon></mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <form class="search-form">
+      <input type="text" name="filter" placeholder="Find by name..." [ngModel]="filter()" (ngModelChange)="filter.set($event)"/>
+    </form>
+  </div>
+
+  <div class="content">
+    @if (viewMode === 'table') {
+      <app-items-table [itemsList]="displayItems() || []"></app-items-table>
+    }
+    @else {
+      <app-items-tile [itemsList]="displayItems() || []"></app-items-tile>
+    }
+  </div>
+
+  <div class="footer">
+    <mat-paginator
+      [length]="displayItems().length"
+      [pageSize]="pagination().pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="setPagination($event)"
+      aria-label="Select page">
+    </mat-paginator>
+  </div>
 </div>
-@if (viewMode === 'table') {
-  <app-items-table [itemsList]="itemsStoreService.getItems()"></app-items-table>
-}
-@else {
-  <app-items-tile [itemsList]="itemsStoreService.getItems()"></app-items-tile>
-}

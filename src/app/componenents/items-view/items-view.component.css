@@ -1,3 +1,32 @@
-mat-button-toggle-group {
-  margin-left: 12px;
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 250px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 16px;
+}
+
+.footer {
+  padding: 16px;
+  background: #f8f9fa;
+  border-top: 1px solid #ddd;
 }
