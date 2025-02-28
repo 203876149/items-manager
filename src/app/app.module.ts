@@ -60,8 +60,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatProgressBarModule
-
+    MatProgressBarModule,
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
