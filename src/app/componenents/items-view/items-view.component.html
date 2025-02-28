@@ -36,9 +36,11 @@
 
     <div class="footer">
       <mat-paginator
-        [length]="displayItems().length"
+        [length]="itemsList()?.length"
         [pageSize]="pagination().pageSize"
         [pageSizeOptions]="[5, 10, 25, 100]"
+        [showFirstLastButtons]="true"
+        [pageIndex]="pagination().pageIndex"
         (page)="setPagination($event)"
         aria-label="Select page">
       </mat-paginator>

@@ -13,6 +13,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {PageEvent} from '@angular/material/paginator';
 import {IItem} from '../../models/item.model';
 import {MatSidenav} from '@angular/material/sidenav';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-items-view',
@@ -23,7 +24,9 @@ import {MatSidenav} from '@angular/material/sidenav';
 })
 
 export class ItemsViewComponent {
-  constructor() {}
+  constructor() {
+    this.itemsStoreService.initItems().pipe(take(1)).subscribe();
+  }
 
   viewMode: 'table' | 'tile' = 'table';
 
@@ -47,6 +50,7 @@ export class ItemsViewComponent {
   })
 
   ngOnInit() {
+
   }
 
 
