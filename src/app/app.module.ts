@@ -21,6 +21,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {provideHttpClient} from '@angular/common/http';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {provideHttpClient} from '@angular/common/http';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressBarModule
 
   ],
   providers: [provideHttpClient()],

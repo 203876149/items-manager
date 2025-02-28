@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
+  computed, effect,
   inject,
   model,
   signal,
@@ -26,6 +26,11 @@ import {take} from 'rxjs/operators';
 export class ItemsViewComponent {
   constructor() {
     this.itemsStoreService.initItems().pipe(take(1)).subscribe();
+    effect(() => {
+      if (this.filter()?.length) {
+        this.pagination.update(v => ({...v, pageIndex: 0}));
+      }
+    });
   }
 
   viewMode: 'table' | 'tile' = 'table';

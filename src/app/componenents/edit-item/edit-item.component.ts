@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ItemsStoreService} from '../../services/items-store.service';
 import {IItem} from '../../models/item.model';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-item',
@@ -44,9 +45,9 @@ export class EditItemComponent {
   onSubmit() {
     if (this.form.invalid) return;
     if (this.mode === 'create') {
-      this.itemsStoreService.addItem(this.form.value);
+      this.itemsStoreService.addItem(this.form.value).pipe(take(1)).subscribe();
     } else {
-      this.itemsStoreService.updateItem({...this.#editItem, ...this.form.value});
+      this.itemsStoreService.updateItem({...this.#editItem, ...this.form.value}).pipe(take(1)).subscribe();
     }
     this.close.emit(true);
   }

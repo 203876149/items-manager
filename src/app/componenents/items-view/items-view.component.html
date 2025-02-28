@@ -26,6 +26,9 @@
     </div>
 
     <div class="content">
+      @if (itemsStoreService.isLoading | async) {
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      }
       @if (viewMode === 'table') {
         <app-items-table [itemsList]="displayItems() || []" (editItem)="onEditItem($event)"></app-items-table>
       }
