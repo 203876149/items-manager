@@ -12,7 +12,7 @@ npm-debug.log
 yarn-error.log
 
 # IDEs and editors
-.idea/
+client/.idea/
 .project
 .classpath
 .c9/
@@ -40,3 +40,16 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Ignore build/dist folders
+dist/
+client/dist/
+server/dist/
+
+.env
+client/.env
+server/.env
