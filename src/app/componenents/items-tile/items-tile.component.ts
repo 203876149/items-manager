@@ -1,4 +1,4 @@
-import {Component, input} from '@angular/core';
+import {Component, EventEmitter, input, Output} from '@angular/core';
 import {IItem} from '../../models/item.model';
 
 @Component({
@@ -9,9 +9,21 @@ import {IItem} from '../../models/item.model';
 })
 export class ItemsTileComponent {
   itemsList = input.required<Array<IItem>>();
+  breakpoint = 5;
+
+  @Output() editItem = new EventEmitter<IItem>();
 
 
-  onResize($event: any) {
+  ngOnInit() {
+    this.onResize({target: {innerWidth: window.innerWidth}});
+  }
 
+
+  onResize(event: any) {
+    this.breakpoint = +((event?.target?.['innerWidth']) / 300).toFixed(0);
+  }
+
+  onEditItem(element: IItem) {
+    this.editItem.emit(element);
   }
 }

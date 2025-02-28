@@ -1,0 +1,96 @@
+
+/* Ensure the grid fills the available space */
+mat-grid-list {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+}
+
+/* Style each grid tile */
+mat-grid-tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card styles */
+.grid-card {
+  width: 100%;
+  max-width: 250px; /* Ensures cards don't stretch too much */
+  min-width: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes actions to the bottom */
+  padding: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background: white;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Card hover effect */
+.grid-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Color circle inside the card */
+.color-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Floating button for color indicator */
+.color-cell button {
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Card content */
+mat-card-content {
+  flex-grow: 1;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Card subtitle */
+mat-card-subtitle {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  padding-top: 16px !important;
+}
+
+/* Card actions */
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 8px;
+}
+
+/* Edit button */
+mat-card-actions button {
+  transition: background 0.3s ease-in-out;
+}
+
+mat-card-actions button:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  mat-grid-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .grid-card {
+    min-width: 200px;
+    max-width: 250px;
+  }
+}

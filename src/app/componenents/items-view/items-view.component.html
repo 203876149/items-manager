@@ -33,7 +33,7 @@
         <app-items-table [itemsList]="displayItems() || []" (editItem)="onEditItem($event)"></app-items-table>
       }
       @else {
-        <app-items-tile [itemsList]="displayItems() || []"></app-items-tile>
+        <app-items-tile [itemsList]="displayItems() || []" (editItem)="onEditItem($event)"></app-items-tile>
       }
     </div>
 
