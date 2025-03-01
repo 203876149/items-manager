@@ -20,7 +20,7 @@ export class ItemsTileComponent {
 
 
   onResize(event: any) {
-    this.breakpoint = +((event?.target?.['innerWidth']) / 300).toFixed(0);
+    this.breakpoint = Math.floor((event?.target?.['innerWidth']) / 300);
   }
 
   onEditItem(element: IItem) {

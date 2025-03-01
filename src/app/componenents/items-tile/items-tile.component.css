@@ -2,7 +2,6 @@
 /* Ensure the grid fills the available space */
 mat-grid-list {
   width: 100%;
-  height: 100%;
   padding: 16px;
 }
 

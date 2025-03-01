@@ -14,10 +14,10 @@ import {take} from 'rxjs/operators';
 export class EditItemComponent {
 
   form: FormGroup = new FormGroup({
-    name: new FormControl<any>('', Validators.required),
-    createdBy: new FormControl<any>('', Validators.required),
-    color: new FormControl<any>('#ff0000', Validators.required),
-    description: new FormControl<any>('')
+    name: new FormControl<string>('', Validators.required),
+    createdBy: new FormControl<string>('', Validators.required),
+    color: new FormControl<string>('#ff0000', Validators.required),
+    description: new FormControl<string>('')
   });
 
   mode: 'create' | 'edit' = 'create';

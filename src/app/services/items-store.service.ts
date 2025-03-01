@@ -25,7 +25,7 @@ export class ItemsStoreService {
     return this.http.get<IItem[]>(URL).pipe(
       tap(items => this.#itemsList.next(items)),
       tap(() => {
-        setTimeout(() => this.isLoading.next(false), 500)
+        setTimeout(() => this.isLoading.next(false), 300)
       })
     );
   }

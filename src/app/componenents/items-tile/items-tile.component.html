@@ -1,5 +1,5 @@
   <mat-grid-list [cols]="breakpoint" (window:resize)="onResize($event)" rowHeight="1:1.2" gutterSize="16px">
-    @for (item of itemsList(); track item.id; let i = $index) {
+    @for (item of itemsList(); track item.id;) {
       <mat-grid-tile>
         <mat-card appearance="raised" class="grid-card">
           <mat-card-header>
